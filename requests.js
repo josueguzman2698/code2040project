@@ -11,6 +11,6 @@ request.onload = function() {
   var status = request.status;
   var data = request.responseText;
 }
-request.open(method, url, true);
+request.open(registerMethod, registrationUrl, true);
 request.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 request.send(data);
