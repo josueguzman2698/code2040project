@@ -112,13 +112,37 @@ function sendPrefix(arr){
   simplePost( myUrl, myData, function(){});
 }
 
+
+
+
+
+// IMPORTANT SECTION
 function getDateStamp(){
   var myUrl = "http://challenge.code2040.org/api/dating";
   var myData = {
     "token" : "391d758b4e5cf621c44f4f0410695886"
   };
   simplePost( myUrl, myData, function(r){
-    var response = JSON.parse(r.responseText);
-    console.log(response);
+    var response = JSON.parse(r.responseText),
+        //converts the ISO 8601 to a Unix timestamp
+        date = Date.parse(response.datestamp),
+        //converts interval to milliseconds
+        interval = response.interval*1000;
+    var sumDate  = date + interval,
+        convertedDate = new Date(sumDate);
+    finalDate = moment(convertedDate).format("YYYY-MM-DDThh:mm:ss");
+    console.log(finalDate);
+    finalDate = moment(finalDate).add(5, "hours").format("YYYY-MM-DDThh:mm:ss");
+    console.log( convertedDate, finalDate);
+    sendDateStamp(finalDate + "Z");
   });
+}
+
+function sendDateStamp(time){
+  var myUrl = "http://challenge.code2040.org/api/dating/validate";
+  var myData = {
+    "token" : "391d758b4e5cf621c44f4f0410695886",
+    "datestamp" : time
+  };
+  simplePost( myUrl, myData, function(){});
 }
