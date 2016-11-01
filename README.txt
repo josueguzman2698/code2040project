@@ -1,1 +1,5 @@
-// The following is a project to fulfill the requirements for the code2040 project
+// The following is the technical portion of the code 2040
+// technical assessment
+
+// I completed this portion by using HTML/Javascript
+// and by runnning my files locally using Apache
