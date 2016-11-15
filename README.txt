@@ -1,4 +1,4 @@
-The following is the technical portion of the code 2040\
+The following is the technical portion of the code 2040
 technical assessment
 
 The only important file is request.js
